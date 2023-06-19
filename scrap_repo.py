@@ -1,11 +1,13 @@
 
 
-try: 
-    import requests 
-    from bs4 import BeautifulSoup 
-    import pandas as pd  
-except Exception as e: 
-    print("Some Modules are Missing {}".format(e))
+# try: 
+#     import requests 
+#     from bs4 import BeautifulSoup 
+#     import pandas as pd  
+# except Exception as e: 
+#     print("Some Modules are Missing {}".format(e))
+
+from modules import * 
 
 def get_repo_csv(url):
 
@@ -15,7 +17,6 @@ def get_repo_csv(url):
     d = soup.findAll('div', class_="d-inline-block mb-1")
     
     base_url = "https://github.com/"
-
 
     titles = []
     isForked = []
@@ -40,13 +41,13 @@ def get_repo_csv(url):
 
     df1 = pd.DataFrame(zip(titles, isForked, repo_links), columns=["title", "isForked", "repo_links"])
     print(df1.head(2))
+    df1 = df1.head(4)
     return df1 
 
 if __name__ == "__main__":
     
     url = "https://github.com/ar8372?tab=repositories" 
     df = get_repo_csv(url)
-    df.to_csv("repo_report.csv", index=False)
 
 
 

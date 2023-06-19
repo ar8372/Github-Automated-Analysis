@@ -131,7 +131,6 @@ def get_code(repo_url, raw_title, raw_text, all_titles):
         return raw_text  + "\n", all_titles + [raw_title]
     base_url = "https://github.com/"
 
-    print("This si d")
 
 
     for _,i in enumerate(d):
